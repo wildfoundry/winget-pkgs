@@ -58,7 +58,7 @@ jobs:
       actions: read
     outputs:
       followup: ${{ steps.spelling.outputs.followup }}
-    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || vars.GENERAL_RUNNER || 'wf-general' }}
+    runs-on: ubuntu-latest
     if: "contains(github.event_name, 'pull_request') || github.event_name == 'push'"
     concurrency:
       group: spelling-${{ github.event.pull_request.number || github.ref }}
@@ -84,7 +84,7 @@ jobs:
   comment-push:
     name: Report (Push)
     # If your workflow isn't running on push, you can remove this job
-    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || vars.GENERAL_RUNNER || 'wf-general' }}
+    runs-on: ubuntu-latest
     needs: spelling
     permissions:
       contents: write
@@ -100,7 +100,7 @@ jobs:
   comment-pr:
     name: Report (PR)
     # If you workflow isn't running on pull_request*, you can remove this job
-    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || vars.GENERAL_RUNNER || 'wf-general' }}
+    runs-on: ubuntu-latest
     needs: spelling
     permissions:
       pull-requests: write
