@@ -99,3 +99,11 @@ wingetcreate
 workflows
 WSL
 yml
+Cloudflight
+DATAPLICITY
+Yocto
+dsc
+restsource
+rewinged
+vlan
+yocto
