@@ -67,12 +67,12 @@ jobs:
     steps:
     - name: check-spelling
       id: spelling
-      uses: check-spelling/check-spelling@v0.0.26
+      uses: check-spelling/check-spelling@cfb6f7e75bbfc89c71eaa30366d0c166f1bd9c8c # v0.0.26
       with:
         suppress_push_for_open_pull_request: 1
         checkout: true
         check_file_names: 1
-        spell_check_this: check-spelling/spell-check-this@prerelease
+        spell_check_this: check-spelling/spell-check-this@a2ec0d38f5ed9c494e76598577065834e46f370c
         post_comment: 0
         use_magic_file: 1
         extra_dictionary_limit: 10
@@ -91,10 +91,10 @@ jobs:
     if: (success() || failure()) && needs.spelling.outputs.followup && github.event_name == 'push'
     steps:
     - name: comment
-      uses: check-spelling/check-spelling@v0.0.26
+      uses: check-spelling/check-spelling@cfb6f7e75bbfc89c71eaa30366d0c166f1bd9c8c # v0.0.26
       with:
         checkout: true
-        spell_check_this: check-spelling/spell-check-this@prerelease
+        spell_check_this: check-spelling/spell-check-this@a2ec0d38f5ed9c494e76598577065834e46f370c
         task: ${{ needs.spelling.outputs.followup }}
 
   comment-pr:
@@ -107,8 +107,8 @@ jobs:
     if: (success() || failure()) && needs.spelling.outputs.followup && contains(github.event_name, 'pull_request')
     steps:
     - name: comment
-      uses: check-spelling/check-spelling@v0.0.26
+      uses: check-spelling/check-spelling@cfb6f7e75bbfc89c71eaa30366d0c166f1bd9c8c # v0.0.26
       with:
         checkout: true
-        spell_check_this: check-spelling/spell-check-this@prerelease
+        spell_check_this: check-spelling/spell-check-this@a2ec0d38f5ed9c494e76598577065834e46f370c
         task: ${{ needs.spelling.outputs.followup }}
